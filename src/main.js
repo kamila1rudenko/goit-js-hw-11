@@ -19,12 +19,11 @@ const query = formData.get('searchQuery')?.trim();
 
     
     clearGallery();
-  showLoader();
+    showLoader();
 
   try {
       const images = await getImagesByQuery(query);
       
-console.log('IMAGES:', images);
     if (images.length === 0) {
       iziToast.info({ title: 'Info', message: 'No images found' });
       return;
