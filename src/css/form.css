@@ -5,7 +5,7 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-.loader {
+/* .loader {
     display: flex;
         margin: 10px auto;
         justify-content: center;
@@ -18,6 +18,18 @@
 }
 
 .loader.hidden {
+    display: none;
+} */
+
+.loader {
+    display: block;
+    margin: 20px auto;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.hidden {
     display: none;
 }
 

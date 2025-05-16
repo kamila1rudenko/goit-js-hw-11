@@ -5,39 +5,50 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
+const loader = document.querySelector('.loader');
 
 function showLoader() {
-  document.querySelector('.loader').classList.remove('hidden');
+  loader.classList.remove('hidden');
 }
 
- function hideLoader() {
-  document.querySelector('.loader').classList.add('hidden');
+function hideLoader() {
+  loader.classList.add('hidden');
 }
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   const formData = new FormData(form);
-const query = formData.get('searchQuery')?.trim();
+  const query = formData.get('searchQuery').trim();
 
   if (!query) {
-    iziToast.warning({ title: 'Warning', message: 'Enter a search term' });
+    iziToast.warning({
+      title: 'Warning',
+      message: 'Enter a search term',
+    });
     return;
   }
 
-    
-    clearGallery();
-    showLoader();
+  clearGallery();
+  showLoader();
 
   try {
-      const images = await getImagesByQuery(query);
-      
+    const images = await getImagesByQuery(query);
+
     if (images.length === 0) {
-      iziToast.info({ title: 'Info', message: 'No images found' });
+      iziToast.info({
+        title: 'Info',
+        message: 'No images found',
+      });
       return;
     }
+
     createGalleryMarkup(images);
   } catch (error) {
-    iziToast.error({ title: 'Error', message: 'Something went wrong' });
+    iziToast.error({
+      title: 'Error',
+      message: 'Something went wrong',
+    });
     console.error(error);
   } finally {
     hideLoader();
