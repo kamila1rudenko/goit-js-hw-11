@@ -5,14 +5,13 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
-const loader = document.querySelector('.loader');
 
 function showLoader() {
-  loader.classList.remove('hidden');
+  document.querySelector('.loader').classList.remove('hidden');
 }
 
 function hideLoader() {
-  loader.classList.add('hidden');
+  document.querySelector('.loader').classList.add('hidden');
 }
 
 form.addEventListener('submit', async (e) => {
